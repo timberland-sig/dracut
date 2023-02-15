@@ -236,7 +236,8 @@ clean:
 dist: dracut-$(DRACUT_MAIN_VERSION).tar.xz
 
 dracut-$(DRACUT_MAIN_VERSION).tar.xz: doc syncheck
-	git archive --format=tar $(DRACUT_MAIN_VERSION) --prefix=dracut-$(DRACUT_MAIN_VERSION)/ > dracut-$(DRACUT_MAIN_VERSION).tar
+#	@echo "DRACUT_VERSION=$(DRACUT_MAIN_VERSION)" > dracut-version.sh
+	git archive --format=tar HEAD --prefix=dracut-$(DRACUT_MAIN_VERSION)/ > dracut-$(DRACUT_MAIN_VERSION).tar
 	mkdir -p dracut-$(DRACUT_MAIN_VERSION)
 	for i in $(manpages) dracut.html; do [ "$${i%/*}" != "$$i" ] && mkdir -p "dracut-$(DRACUT_MAIN_VERSION)/$${i%/*}"; cp "$$i" "dracut-$(DRACUT_MAIN_VERSION)/$$i"; done
 	tar --owner=root --group=root -rf dracut-$(DRACUT_MAIN_VERSION).tar $$(find dracut-$(DRACUT_MAIN_VERSION) -type f)
