@@ -17,7 +17,7 @@ if [ -e /tmp/nvmf-fc-auto ] && [ "$NVMF_HOSTNQN_OK" ] \
 fi
 if [ -e /tmp/valid_nbft_entry_found ]; then
     # prio 2: NBFT
-    /usr/sbin/nvme connect-nbft
+    /usr/sbin/nvme connect-all
     [ "$1" = timeout ] || exit 0
 fi
 if [ -f /etc/nvme/discovery.conf ] && [ $NVMF_HOSTNQN_OK ]; then
