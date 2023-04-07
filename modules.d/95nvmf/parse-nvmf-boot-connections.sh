@@ -201,7 +201,7 @@ nbft_parse() {
     local nbft_json n_nbft all_hfi_json n_hfi
     local j=0 i
 
-    nbft_json=$(nvme show-nbft -H -o json) || return 0
+    nbft_json=$(nvme nbft show -H -o json) || return 0
     n_nbft=$(nbft_run_jq ". | length" "$nbft_json") || return 0
 
     while [ "$j" -lt "$n_nbft" ]; do
