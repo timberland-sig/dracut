@@ -222,6 +222,11 @@ if getargbool 0 rd.nonvmf; then
     return 0
 fi
 
+if getargbool 0 rd.nvmf.nostatic; then
+    rm -f /etc/cmdline.d/95nvmf-args.conf
+    rm -f /etc/nvme/discovery.conf /etc/nvme/config.json
+fi
+
 if ! getargbool 0 rd.nvmf.nonbft; then
     for _x in /sys/firmware/acpi/tables/NBFT*; do
         if [ -f "$_x" ]; then
